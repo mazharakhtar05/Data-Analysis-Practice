@@ -1,0 +1,43 @@
+'''
+Question
+Perform data analysis on a students.csv dataset using Pandas, NumPy, and Matplotlib.
+
+Tasks:
+Sort the students by their marks in ascending order.
+Find the average marks subject-wise.
+Display all students who scored more than 85 marks.
+Convert marks column into a NumPy array and calculate Mean, Median, Standard Deviation.
+Visualize subject-wise average marks using a bar chart.
+
+'''
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("Students.csv")
+
+print('Sorting values in an ascending order')
+print(df.sort_values(by = 'Marks'), "\n")
+
+print('Mean value subject wise')
+print(df.groupby('Subject')['Marks'].mean(), "\n")
+print('Student Markes greater then 85')
+print(df[df['Marks']>85] , "\n")
+
+print('Converting into numpy\n' )
+df = df['Marks'].to_numpy()
+
+print("Mean , Median , Std Using Numpy")
+print("Mean" , np.mean(marks))
+print("Median" , np.median(marks))
+print("Standard Deviation" , np.std(marks), "\n")
+
+df = pd.read_csv("students.csv")
+avg_marks = df.groupby('Subject')['Marks'].mean()
+plt.bar(avg_marks.index , avg_marks.values , color = 'Skyblue')
+plt.xlabel("Subjects")
+plt.ylabel('Average Marks')
+plt.title("Subject Wise Avg Marks")
+plt.show()
+
