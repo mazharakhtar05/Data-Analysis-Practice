@@ -1,0 +1,64 @@
+
+# ==================================================
+# 📊 Sales Data Analysis Project (Day 2)
+# Using Pandas, NumPy, and Matplotlib
+# ==================================================
+
+# ---------- Import Libraries ----------
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# ---------- Step 1: Load Dataset ----------
+df = pd.read_csv("Sales.csv")
+print("First 5 rows of dataset:\n", df.head(5), "\n")
+
+# ---------- Step 2: Data Processing with Pandas ----------
+# Add a new column 'Total Sales' = Quantity × Price
+df['Total Sales'] = df['Quantity'] * df['Price']
+
+# Sort by Price (Top 3 most expensive items)
+print("Top 3 Products with Highest Price:\n")
+print(df.sort_values(by='Price', ascending=False).head(3), "\n")
+
+# Average Sales per Category
+print("Average Sales by Category:\n")
+avg_sales = df.groupby('Category')['Total Sales'].mean()
+print(avg_sales.head(), "\n")
+
+# ---------- Step 3: Statistical Analysis with NumPy ----------
+sales = df['Total Sales'].to_numpy()   # Convert column to NumPy array
+
+print("📈 Statistical Analysis of Sales:")
+print("Mean of Total Sales:", np.mean(sales))
+print("Median of Total Sales:", np.median(sales))
+print("Standard Deviation of Total Sales:", np.std(sales), "\n")
+
+# ---------- Step 4: Visualization with Matplotlib ----------
+
+# ✅ Bar chart: Region vs Total Sales
+if "Region" in df.columns:   # Check if Region exists in dataset
+    region_sales_sum = df.groupby('Region')['Total Sales'].sum()
+    plt.figure(figsize=(6,4))
+    plt.bar(region_sales_sum.index, region_sales_sum.values, color='skyblue')
+    plt.title("Total Sales by Region")
+    plt.xlabel("Region")
+    plt.ylabel("Total Sales")
+    plt.show()
+else:
+    print("⚠️ Region column not found in dataset. Skipping Region Bar Chart.\n")
+
+# ✅ Pie chart: Category-wise Sales Distribution
+category_sales = df.groupby('Category')['Total Sales'].sum()
+plt.figure(figsize=(6,6))
+plt.pie(category_sales.values, labels=category_sales.index, autopct='%1.1f%%', startangle=90)
+plt.title("Category-wise Sales Distribution")
+plt.show()
+
+# ✅ Histogram: Distribution of Total Sales
+plt.figure(figsize=(6,4))
+plt.hist(df['Total Sales'], bins=10, color='green', alpha=0.7)
+plt.title("Distribution of Total Sales")
+plt.xlabel("Total Sales")
+plt.ylabel("Frequency")
+plt.show()
