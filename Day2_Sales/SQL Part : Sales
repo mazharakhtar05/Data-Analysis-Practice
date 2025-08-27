@@ -1,0 +1,36 @@
+# Table Creation
+CREATE TABLE Sales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Product VARCHAR(100),
+    Category VARCHAR(100),
+    Quantity INT,
+    Price DECIMAL(10,2)
+);
+
+#Insert Sample Data
+INSERT INTO Sales (Product, Category, Quantity, Price) VALUES
+('Laptop', 'Electronics', 2, 55000),
+('Headphones', 'Electronics', 5, 1500),
+('Shirt', 'Clothing', 3, 800),
+('Shoes', 'Clothing', 2, 2000),
+('Book', 'Stationery', 10, 250);
+
+#Calculate Total Sales (Quantity × Price)
+SELECT Product, Category, Quantity, Price, (Quantity * Price) AS Total_Sales
+FROM Sales;
+
+#Find Average Sales per Category
+SELECT Category, AVG(Quantity * Price) AS Avg_Sales
+FROM Sales
+GROUP BY Category;
+
+#Get Top 3 Most Expensive Products
+SELECT Product, Price 
+FROM Sales
+ORDER BY Price DESC
+LIMIT 3;
+
+#Total Quantity Sold per Category
+SELECT Category, SUM(Quantity) AS Total_Quantity
+FROM Sales
+GROUP BY Category;
