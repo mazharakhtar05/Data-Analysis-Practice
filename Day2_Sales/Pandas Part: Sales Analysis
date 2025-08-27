@@ -1,0 +1,19 @@
+# ---------- Pandas Part: Sales Analysis ----------
+
+import pandas as pd
+
+# 1. Load the dataset
+df = pd.read_csv("Sales.csv")
+print("First 5 rows of dataset:\n", df.head(5), "\n")
+
+# 2. Add a new column 'Total Sales' = Quantity × Price
+df['Total Sales'] = df['Quantity'] * df['Price']
+
+# 3. Sort by Price (Top 3 most expensive items)
+print("Top 3 Products with Highest Price:\n")
+print(df.sort_values(by='Price', ascending=False).head(3), "\n")
+
+# 4. Find Average Sales per Category
+print("Average Sales by Category:\n")
+avg_sales = df.groupby('Category')['Total Sales'].mean()
+print(avg_sales.head(), "\n")
