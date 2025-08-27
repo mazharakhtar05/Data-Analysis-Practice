@@ -1,0 +1,28 @@
+# -------------------------------
+#  MATPLOTLIB SECTION
+# -------------------------------
+import matplotlib.pyplot as plt
+
+# ✅ Bar chart: Region vs Total Sales
+region_sales_sum = df.groupby('Region')['Total Sales'].sum()
+plt.figure(figsize=(6,4))
+plt.bar(region_sales_sum.index, region_sales_sum.values, color='skyblue')
+plt.title("Total Sales by Region")
+plt.xlabel("Region")
+plt.ylabel("Total Sales")
+plt.show()
+
+# ✅ Pie chart: Category-wise Sales Distribution
+category_sales = df.groupby('Category')['Total Sales'].sum()
+plt.figure(figsize=(6,6))
+plt.pie(category_sales.values, labels=category_sales.index, autopct='%1.1f%%', startangle=90)
+plt.title("Category-wise Sales Distribution")
+plt.show()
+
+# ✅ Histogram: Distribution of Total Sales
+plt.figure(figsize=(6,4))
+plt.hist(df['Total Sales'], bins=10, color='green', alpha=0.7)
+plt.title("Distribution of Total Sales")
+plt.xlabel("Total Sales")
+plt.ylabel("Frequency")
+plt.show()
