@@ -1,0 +1,11 @@
+OrderID,Product,Category,Quantity,Price,Date
+1,Laptop,Electronics,2,50000,2025-08-01
+2,Headphones,Electronics,5,2000,2025-08-02
+3,T-Shirt,Fashion,10,500,2025-08-02
+4,Mobile,Electronics,3,15000,2025-08-03
+5,Shoes,Fashion,4,2500,2025-08-04
+6,Book,Stationery,6,300,2025-08-04
+7,Pencil,Stationery,20,10,2025-08-05
+8,Tablet,Electronics,1,25000,2025-08-05
+9,Watch,Fashion,2,3000,2025-08-06
+10,Laptop,Electronics,1,50000,2025-08-06
