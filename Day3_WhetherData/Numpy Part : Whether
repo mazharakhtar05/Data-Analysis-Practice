@@ -1,0 +1,10 @@
+import pandas as pd
+import numpy as np
+
+# Load dataset
+df = pd.read_csv("weather.csv")
+temps = df["Temperature"].to_numpy()
+
+print("Min Temperature:", np.min(temps))
+print("Max Temperature:", np.max(temps))
+print("Temperature Variance:", np.var(temps), "\n")
