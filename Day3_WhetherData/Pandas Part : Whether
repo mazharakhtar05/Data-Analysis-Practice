@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv("weather.csv")
+
+# 1) Hottest day
+hottest_day = df.loc[df["Temperature"].idxmax()]
+print("Hottest Day:\n", hottest_day, "\n")
+
+# 2) Coldest day
+coldest_day = df.loc[df["Temperature"].idxmin()]
+print("Coldest Day:\n", coldest_day, "\n")
+
+# 3) Average rainfall per city
+avg_rainfall = df.groupby("City")["Rainfall"].mean()
+print("Average Rainfall per City:\n", avg_rainfall, "\n")
