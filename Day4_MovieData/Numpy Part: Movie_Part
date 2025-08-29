@@ -1,0 +1,5 @@
+import numpy as np  
+
+ratings = df["Rating"].values  
+percentile_90 = np.percentile(ratings, 90)  
+print("90th Percentile of Ratings:", percentile_90)
