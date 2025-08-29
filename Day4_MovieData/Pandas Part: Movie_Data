@@ -1,0 +1,7 @@
+import pandas as pd  
+
+df = pd.read_csv("movies.csv")  
+
+# Highest rated movie per genre
+highest_rated = df.loc[df.groupby("Genre")["Rating"].idxmax()]  
+print(highest_rated[["Genre","Title","Rating"]])
