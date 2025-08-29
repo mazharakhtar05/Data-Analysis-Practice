@@ -1,0 +1,10 @@
+import matplotlib.pyplot as plt  
+
+avg_rating = df.groupby("Genre")["Rating"].mean()  
+
+plt.figure(figsize=(8,5))  
+plt.bar(avg_rating.index, avg_rating.values)  
+plt.xlabel("Genre")  
+plt.ylabel("Average Rating")  
+plt.title("Average Rating by Genre")  
+plt.show()
