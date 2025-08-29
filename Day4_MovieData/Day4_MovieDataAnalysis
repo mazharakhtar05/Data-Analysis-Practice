@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load dataset
+df = pd.read_csv("movies.csv")
+
+# ------------------ Pandas ------------------
+highest_rated = df.loc[df.groupby("Genre")["Rating"].idxmax()]
+print("🎬 Highest Rated Movie per Genre:\n", highest_rated)
+
+# ------------------ NumPy ------------------
+ratings = df["Rating"].to_numpy()
+p90 = np.percentile(ratings, 90)
+print(f"⭐ 90th Percentile of Ratings: {p90}")
+
+# ------------------ Matplotlib ------------------
+avg_rating = df.groupby("Genre")["Rating"].mean()
+plt.bar(avg_rating.index, avg_rating.values)
+plt.title("Average Rating per Genre")
+plt.xlabel("Genre")
+plt.ylabel("Average Rating")
+plt.xticks(rotation=45)
+plt.show()
